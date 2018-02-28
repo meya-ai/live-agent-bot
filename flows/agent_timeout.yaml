@@ -1,0 +1,8 @@
+name: agent_timeout
+states:
+    first:
+        component: meya.text
+        properties:
+            text: "Agent timeout. {{ flow }}"
+    second:
+        component: human.close

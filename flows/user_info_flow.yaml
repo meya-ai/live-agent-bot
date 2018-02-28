@@ -1,0 +1,24 @@
+name: user_info_flow
+states:
+    ask_name:
+        component: meya.input_string
+        properties:
+            text: "What's your first name?"
+            output: first_name
+            scope: user
+    ask_surname:
+        component: meya.input_string
+        properties:
+            text: "What's your last name?"
+            output: last_name
+            scope: user
+    ask_income:
+        component: meya.input_string
+        properties:
+            text: "What's your income?"
+            output: income
+            scope: user
+    thank_you:
+        component: meya.text
+        properties:
+            text: "Thanks {{ user.first_name }} {{ user.last_name }}, you earn {{ user.income }}."

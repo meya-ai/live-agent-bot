@@ -1,0 +1,8 @@
+name: chat_transferred_flow
+states:
+    first_state:
+        component: meya.text
+        properties:
+            text: "Transferring you to agent {{ flow.agent_name }}."
+    return_state:
+        component: meya.pause

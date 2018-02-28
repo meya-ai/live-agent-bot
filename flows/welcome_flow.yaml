@@ -1,0 +1,15 @@
+name: welcome_flow
+states:
+    first:
+        component: meya.text
+        properties:
+            text: |
+                Hello and welcome to the Salesforce Live Agent integration demo.
+    second:
+        component: meya.text
+        properties:
+            text: |
+                * To transfer the bot conversation to a Salesforce agent simply
+                type **agent**.
+                * To capture some user information type **info**, this information
+                will be sent to Saleforce as Visitor Details.

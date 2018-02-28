@@ -1,0 +1,48 @@
+name: agent_flow
+states:
+    transfer:
+        component: human.transfer
+        properties:
+            text: Transferring you to a sales agent
+            assignee: "Inigo Montoya"
+            note: |
+                Customer wants to apply for a card
+                Name - {{ user.first_name }}
+                Surname - {{ user.last_name }}
+                Income - {{ user.income }}
+
+            timeout: 60
+            timeout_flow: agent_timeout
+            timeout_data:
+                x: "X"
+                y: "Y"
+
+            chat_ended:
+                flow: chat_ended_flow
+                data:
+                    ended: "yes"
+
+            chat_request_failed:
+                flow: chat_request_failed_flow
+                data:
+                    request_failed: "yes"
+
+            chat_transferred:
+                flow: chat_transferred_flow
+                data:
+                    transferred: "yes"
+
+            queue_update:
+                flow: queue_update_flow
+                data:
+                    queue_update: "yes"
+
+            visitor_details:
+                Name__c: "{{ user.first_name }}"
+                Surname__c: "{{ user.last_name }}"
+                Income__c: "{{ user.income }}"
+
+    state_2:
+        component: human.note
+        properties:
+            text: "They are a great customer! Treat them right."

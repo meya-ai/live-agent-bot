@@ -1,0 +1,7 @@
+name: chat_request_failed_flow
+states:
+
+    text_state:
+        component: meya.text
+        properties:
+            text: "Seems like all our agents are currently busy, please try again later."

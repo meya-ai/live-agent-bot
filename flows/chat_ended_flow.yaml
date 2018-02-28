@@ -1,0 +1,7 @@
+name: chat_ended_flow
+states:
+
+    text_state:
+        component: meya.text
+        properties:
+            text: "The agent chat has ended!"
