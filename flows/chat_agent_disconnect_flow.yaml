@@ -1,0 +1,8 @@
+name: chat_agent_disconnect_flow
+states:
+    first:
+        component: meya.text
+        properties:
+            text: "Agent disconnected :-("
+    return_state:
+        component: meya.pause

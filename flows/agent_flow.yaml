@@ -17,6 +17,16 @@ states:
                 x: "X"
                 y: "Y"
 
+            chat_request_success:
+                flow: chat_request_success_flow
+                data:
+                    success: "yes"
+
+            chat_established:
+                flow: chat_established_flow
+                data:
+                    established: "yes"
+
             chat_ended:
                 flow: chat_ended_flow
                 data:
@@ -26,6 +36,11 @@ states:
                 flow: chat_request_failed_flow
                 data:
                     request_failed: "yes"
+
+            chat_agent_disconnect:
+                flow: chat_agent_disconnect_flow
+                data:
+                    agent_disconnect: "yes"
 
             chat_transferred:
                 flow: chat_transferred_flow

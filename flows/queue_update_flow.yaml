@@ -1,10 +1,18 @@
 name: queue_update_flow
 states:
-    text_buttons_state:
+    check_position_state:
+        component: meya.conditional_equal
+        properties:
+          value1: '{{ flow.queue_position }}'
+          value2: 0
+        transitions:
+          equal: agent_queue_state
+          notequal: main_queue_state
+
+    main_queue_state:
         component: meya.text_buttons
         properties:
-            text: "You are in queue position {{ flow.queue_position }}"
-            output: salesforce_opt_out
+            text: "You are now in queue position {{ flow.queue_position }}"
             buttons:
                 - text: "Continue Waiting"
                   action: continue
@@ -13,12 +21,31 @@ states:
         transitions:
             continue: continue_waiting_state
             return_to_bot: return_to_bot_state
+
+    agent_queue_state:
+        component: meya.text_buttons
+        properties:
+            text: |
+                You have been assigned to an agent but the agent still needs
+                accept your chat.
+            buttons:
+                - text: "Continue Waiting"
+                  action: continue
+                - text: "Return to Bot"
+                  action: return_to_bot
+        transitions:
+            continue: continue_waiting_state
+            return_to_bot: return_to_bot_state
+
     continue_waiting_state:
         component: meya.pass
+
     return_from_continue_waiting_state:
         # Pause the bot again while we wait for an agent.
         component: meya.pause
         return: true
+
     return_to_bot_state:
         # Close the human.transfer session and let the bot takeover
         component: human.close
+        return: true

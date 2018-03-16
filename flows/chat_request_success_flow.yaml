@@ -1,0 +1,29 @@
+name: chat_request_success_flow
+states:
+    first_state:
+        component: meya.text_buttons
+        properties:
+            text: |
+                Your chat has been accepted but you are currently in the main
+                queue at position {{ flow.queue_position }}.
+            buttons:
+                - text: "Continue Waiting"
+                  action: continue
+                - text: "Return to Bot"
+                  action: return_to_bot
+        transitions:
+            continue: continue_waiting_state
+            return_to_bot: return_to_bot_state
+
+    continue_waiting_state:
+        component: meya.pass
+
+    return_from_continue_waiting_state:
+        # Pause the bot again while we wait for an agent.
+        component: meya.pause
+        return: true
+
+    return_to_bot_state:
+        # Close the human.transfer session and let the bot takeover
+        component: human.close
+        return: true

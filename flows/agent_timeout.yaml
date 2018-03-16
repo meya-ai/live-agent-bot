@@ -3,6 +3,6 @@ states:
     first:
         component: meya.text
         properties:
-            text: "Agent timeout. {{ flow }}"
+            text: "Agent timeout."
     second:
         component: human.close
