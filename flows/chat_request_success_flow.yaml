@@ -1,4 +1,3 @@
-name: chat_request_success_flow
 states:
     first_state:
         component: meya.text_buttons

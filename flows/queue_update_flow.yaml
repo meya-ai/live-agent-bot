@@ -1,4 +1,3 @@
-name: queue_update_flow
 states:
     check_position_state:
         component: meya.conditional_equal

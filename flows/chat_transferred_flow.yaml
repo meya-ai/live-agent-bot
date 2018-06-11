@@ -1,4 +1,3 @@
-name: chat_transferred_flow
 states:
     first_state:
         component: meya.text

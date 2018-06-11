@@ -1,6 +1,9 @@
-name: carousel
+triggers:
+  - type: meya.keyword
+    properties:
+        ignorecase: true
+        keyword: car
 states:
-
     multi_card_state:
         component: meya.cards
         properties:
