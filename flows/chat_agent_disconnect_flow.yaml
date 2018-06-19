@@ -1,4 +1,3 @@
-name: chat_agent_disconnect_flow
 states:
     first:
         component: meya.text

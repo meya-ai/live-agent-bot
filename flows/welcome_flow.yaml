@@ -1,4 +1,5 @@
-name: welcome_flow
+triggers:
+  - type: meya.greetings
 states:
     first:
         component: meya.text

@@ -1,4 +1,8 @@
-name: agent_flow
+triggers:
+  - type: meya.keyword
+    properties:
+        ignorecase: true
+        keyword: agent
 states:
     transfer:
         component: human.transfer

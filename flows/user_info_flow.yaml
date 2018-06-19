@@ -1,4 +1,8 @@
-name: user_info_flow
+triggers:
+  - type: meya.keyword
+    properties:
+        ignorecase: true
+        keyword: info
 states:
     ask_name:
         component: meya.input_string
